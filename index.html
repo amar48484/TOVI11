@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="موقع TOVI لأفضل الألعاب الكلاسيكية" />
+  <meta name="keywords" content="ألعاب, ألعاب كلاسيكية, ألعاب مجانية" />
+  <meta http-equiv="Cache-Control" content="max-age=604800, public" />
+  <title>TOVI | ألعاب كلاسيكية</title>
+
+  <!-- Preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" as="style" />
+  <link rel="preload" href="images/repo.jpg" as="image" />
+  <link rel="preload" href="images/Schedule.jpg" as="image" />
+
+  <!-- Slick CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    :root {
+      --primary: #4CAF50; /* لون أخضر */
+      --dark: #121212;
+      --card: #222;
+      --text: #fff;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--dark);
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      border-bottom: 1px solid #333;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin: 0;
+      cursor: pointer;
+      font-size: 1.8rem;
+    }
+
+    .search-container {
+      display: flex;
+      flex-grow: 1;
+      max-width: 600px;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      padding: 10px 15px;
+      border: 1px solid #333;
+      border-radius: 25px;
+      background: var(--card);
+      color: var(--text);
+      font-family: 'Cairo';
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    .search-bar:focus {
+      border-color: var(--primary);
+    }
+
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+    }
+
+    .game {
+      background-color: var(--card);
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+    }
+
+    .game:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+    }
+
+    .game img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .game h2 {
+      margin: 12px 0;
+      padding: 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .rating {
+      color: #ffd700;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #888;
+      padding: 50px 0;
+    }
+
+    /* Slick slider adjustments */
+    .fade {
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fade img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* عداد الزوار */
+    #visitor-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #4CAF50;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-family: 'Cairo';
+      font-weight: bold;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+      display: flex;
+      align-items: center;
+    }
+    
+    #visitor-counter::before {
+      content: "👁️";
+      margin-left: 5px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      .search-container {
+        width: 100%;
+      }
+      
+      #visitor-counter {
+        bottom: 10px;
+        left: 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 onclick="location.href='index.html'" tabindex="0" role="button" aria-label="الرئيسية">TOVI</h1>
+
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="ابحث عن الألعاب..."
+        id="searchInput"
+        aria-label="بحث عن الألعاب"
+      />
+    </div>
+  </header>
+
+  <!-- Slick Slider -->
+  <div class="fade">
+    <div><img src="images/repo.jpg" alt="R.E.P.O" /></div>
+    <div><img src="images/grfi.jpg" alt="صورة 2" /></div>
+    <div><img src="images/amar.jpg" alt="صورة 3" /></div>
+    <div><img src="images/Schedule.jpg" alt="Schedule I" /></div>
+  </div>
+
+  <main id="gamesContainer">
+    <a href="repo.html" class="game" data-title="repo" data-rating="5" data-category="أكشن">
+      <img src="images/repo.jpg" alt="R.E.P.O" loading="lazy" />
+      <h2>R.E.P.O</h2>
+      <div class="rating">★★★★★</div>
+    </a>
+
+    <a href="granny.html" class="game" data-title="granny" data-rating="4" data-category="رعب">
+      <img src="images/granny2.jpg" alt="Granny" loading="lazy" />
+      <h2>Granny</h2>
+      <div class="rating">★★★★☆</div>
+    </a>
+
+    <a href="outlast1.html" class="game" data-title="outlast" data-rating="4" data-category="رعب">
+      <img src="images/outlast.jpg" alt="Outlast" loading="lazy" />
+      <h2>Outlast</h2>
+      <div class="rating">★★★★☆</div>
+    </a>
+
+    <a href="schedule.html" class="game" data-title="schedule" data-rating="4" data-category="محاكاة">
+      <img src="images/Schedule.jpg" alt="Schedule I" loading="lazy" />
+      <h2>Schedule I</h2>
+      <div class="rating">★★★★☆</div>
+    </a>
+  </main>
+
+  <!-- عداد الزوار -->
+  <div id="visitor-counter">جاري التحميل...</div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Slick JS -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  
+  <!-- عداد الزوار باستخدام Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDEXAMPLEEXAMPLEEXAMPLE",
+      authDomain: "your-project.firebaseapp.com",
+      databaseURL: "https://your-project.firebaseio.com",
+      projectId: "your-project",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:EXAMPLEEXAMPLE"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    
+    // عداد الزوار
+    const counterRef = firebase.database().ref('visitorCount');
+    
+    // زيادة العداد عند كل زيارة
+    counterRef.transaction((current) => {
+      return (current || 0) + 1;
+    });
+    
+    // عرض العداد
+    counterRef.on('value', (snapshot) => {
+      const count = snapshot.val();
+      document.getElementById('visitor-counter').textContent = `الزوار: ${count.toLocaleString()}`;
+    });
+
+    // Slick Slider
+    $('.fade').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear'
+    });
+
+    // بحث متقدم
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const searchTerm = this.value.trim().toLowerCase();
+      const gameElements = document.querySelectorAll('.game');
+      let hasResults = false;
+
+      gameElements.forEach((game) => {
+        const title = game.dataset.title.toLowerCase();
+        const category = game.dataset.category.toLowerCase();
+        const matches = title.includes(searchTerm) || category.includes(searchTerm);
+
+        if (matches || searchTerm === '') {
+          game.style.display = 'block';
+          hasResults = true;
+        } else {
+          game.style.display = 'none';
+        }
+      });
+
+      // عرض رسالة إذا لم توجد نتائج
+      const noResults = document.querySelector('.no-results');
+      if (!hasResults && searchTerm !== '') {
+        if (!noResults) {
+          const msg = document.createElement('div');
+          msg.className = 'no-results';
+          msg.textContent = 'لا توجد ألعاب مطابقة للبحث';
+          document.getElementById('gamesContainer').appendChild(msg);
+        }
+      } else if (noResults) {
+        noResults.remove();
+      }
+    });
+  </script>
+</body>
+</html>
